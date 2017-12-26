@@ -31,7 +31,8 @@ public class BotonElevarAlCuadradoActionListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String datoEntrada = ventana.leerDatosDeEntrada();
 		if (datoEntrada.isEmpty()) {
-			JOptionPane.showMessageDialog(ventana, "No hay datos de entrada en la caja de texto", "Información",
+			JOptionPane.showMessageDialog(ventana, "No hay datos de"
+                                + " entrada en la caja de texto", "Información",
 					JOptionPane.INFORMATION_MESSAGE);
 		} else {
 

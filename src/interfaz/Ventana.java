@@ -1,13 +1,12 @@
 package interfaz;
 
-import escuchadores.CalcularTrigoButton;
+import escuchadores.CalcularTrigoButtonActionListener;
 import escuchadores.CalcularCambioBaseActionListener;
 import static com.sun.glass.ui.Cursor.setVisible;
 import escuchadores.BotonElevarAlCuadradoActionListener;
 import escuchadores.BotonFactorialActionListener;
 import escuchadores.BotonRaizOInversaActionListener;
 import escuchadores.CheckboxRaizOInversaItemListener;
-import escuchadores.ComboBoxTrigoItemListener;
 import escuchadores.RadioButtonGradosItemListener;
 import escuchadores.RadioButtonRadianesItemListener;
 import java.awt.*;
@@ -177,17 +176,14 @@ public class Ventana extends JFrame {
 
 	private void registrarEscuchadores() {
 		
-            // Se registra e instancia el escuchador asociado
             botonElevarAlCuadrado.addActionListener(new BotonElevarAlCuadradoActionListener(this));
             botonFactorial.addActionListener(new BotonFactorialActionListener(this));
             checkBoxRaizOInversa.addItemListener(new CheckboxRaizOInversaItemListener(this));
             botonRaizOInversa.addActionListener(new BotonRaizOInversaActionListener(this));               
             radioButtonGrados.addItemListener(new RadioButtonGradosItemListener(this));
             radioButtonRadianes.addItemListener(new RadioButtonRadianesItemListener(this));
-            //comboBoxTrigo.addItemListener(new ComboBoxTrigoItemListener(this));
-            calcularTrigoButton.addActionListener(new CalcularTrigoButton(this));
-            calcularBaseButton.addActionListener(new CalcularCambioBaseActionListener(this));
-                   
+            calcularTrigoButton.addActionListener(new CalcularTrigoButtonActionListener(this));
+            calcularBaseButton.addActionListener(new CalcularCambioBaseActionListener(this));                 
             
 	} 
 
@@ -214,7 +210,7 @@ public class Ventana extends JFrame {
 		cajaTextoEntrada.requestFocus();
 	}
 
-    //Métodos accesores para controlar el comportamiento de algunos controles
+    //Métodos accesores para acceder al comportamiento de algunos controles
     public JRadioButton getRadioButtonRadianes() {
         return radioButtonRadianes;
     }

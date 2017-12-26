@@ -14,18 +14,21 @@ import javax.swing.JOptionPane;
  *
  * @author Javi
  */
-public class CalcularTrigoButton implements ActionListener {
+public class CalcularTrigoButtonActionListener implements ActionListener {
 
     private Ventana ventana;
 
-    public CalcularTrigoButton(Ventana ventana) {
+    public CalcularTrigoButtonActionListener(Ventana ventana) {
         this.ventana = ventana;
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        String datoEntrada = ventana.leerDatosDeEntrada();
+       String datoEntrada = ventana.leerDatosDeEntrada();
+       
+       try{
+           
         double resultGrados = calcularTrigo(Double.parseDouble(datoEntrada));
         
         if (ventana.getRadioButtonGrados().isSelected()) {
@@ -44,6 +47,19 @@ public class CalcularTrigoButton implements ActionListener {
                     "Debe seleccionarse al menos un valor\nGRADOS | RADIANES", 
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
+       }
+        catch (NumberFormatException ex) 
+       {
+           JOptionPane.showMessageDialog(ventana,
+             "No se puede realizar el cálculo del valor recibido: "
+               + "Se esperaba un valor entero", "Error",
+              JOptionPane.ERROR_MESSAGE);
+               ventana.escribirDatosDeSalida(
+               String.format("[ERROR] Se produjo un error alrealizar el cálculo" 
+               , datoEntrada));
+               ventana.establecerFocoEnDatosDeEntrada();
+        }
+        
         
     }
 

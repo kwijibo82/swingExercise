@@ -26,8 +26,9 @@ public class CalcularCambioBaseActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
       
        String datoEntrada = ventana.leerDatosDeEntrada();
+       try {
 
-       String baseOrigen = Integer.toString(Integer.parseInt(datoEntrada),
+           String baseOrigen = Integer.toString(Integer.parseInt(datoEntrada),
                Integer.parseInt(ventana.getSpinnerBaseOrigen()
                        .getValue().toString()));
 
@@ -40,7 +41,19 @@ public class CalcularCambioBaseActionListener implements ActionListener {
                ventana.getSpinnerBaseOrigen().getValue().toString(),
                ventana.getSpinnerBaseACalcular().getValue().toString(), 
                baseACalcular));
-
+           
+       }
+       catch (NumberFormatException ex) 
+       {
+           JOptionPane.showMessageDialog(ventana,
+             "No se puede realizar el cambio de base del valor recibido: "
+               + "Se esperaba un valor entero", "Error",
+              JOptionPane.ERROR_MESSAGE);
+               ventana.escribirDatosDeSalida(
+               String.format("[ERROR] Se produjo un error al calcular "
+               + "la conversión de base %s", datoEntrada));
+               ventana.establecerFocoEnDatosDeEntrada();
+        }
     }
     
 }

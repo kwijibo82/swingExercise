@@ -27,7 +27,8 @@ public class RadioButtonGradosItemListener implements ItemListener {
     public void itemStateChanged(ItemEvent e) {
        
         if (e.getStateChange() == ItemEvent.SELECTED) {
-            JOptionPane.showMessageDialog(ventana, "Se realizarán los cálculos en grados", "Información",
+            JOptionPane.showMessageDialog(ventana, "Se realizarán los cálculos"
+                    + " en grados", "Información",
 					JOptionPane.INFORMATION_MESSAGE);
             ventana.getRadioButtonRadianes().setSelected(false);
         } 
